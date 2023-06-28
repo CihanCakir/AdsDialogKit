@@ -28,10 +28,13 @@ jobs:
   create_nuget:
     runs-on: ubuntu-latest
     steps:
+    - name: 'Get Version'
+      id: version
+      uses: battila7/get-version-action@v2
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
-    - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+    - run: dotnet pack --configuration Release --include-symbols -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.NuGetDirectory }}
     - uses: actions/upload-artifact@v3
       with:
         name: nuget
@@ -77,10 +80,12 @@ jobs:
       with:
         name: nuget
         path: ${{ env.NuGetDirectory }}
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
+
     - name: Publish NuGet package
       run: |
         foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
-            dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json
+            dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
         }
