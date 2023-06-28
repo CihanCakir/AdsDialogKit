@@ -4,6 +4,18 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+      <PackageId>AdsDialogKit</PackageId>
+        <Authors>Cihan Çakır</Authors>
+        <Description>
+        Dialog Kit is a user interface solution that provides fast and customizable dialog boxes. It helps you add informative messages, alerts and user logins to your applications.        </Description>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PackageIcon>logo.png</PackageIcon>
+        <PackageProjectUrl>https://github.com/CihanCakir/AdsDialogKit</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/CihanCakir/AdsDialogKit</RepositoryUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <Copyright>Copyright (c) 2023, Cihan Çakır</Copyright>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <ProduceReferenceAssemblyInOutDir>true</ProduceReferenceAssemblyInOutDir>
   </PropertyGroup>
 
 	<ItemGroup>
