@@ -100,7 +100,7 @@ dotnet add package AdsDialogKit
 <!-- USAGE EXAMPLES -->
 ### Usage
 
-##### Create The LocalizationBook
+##### Create The SampleStaticDialogBoxHelperMethods
 
 ```csharp
 using AdsDialogKit;
@@ -141,7 +141,7 @@ using AdsDialogKit;
 builder.Services.AddAdsDialogBox()
 ```
 
-##### Call the Localizator
+##### Call the DialogBox
 
 ```csharp
 using AdsDialogKit;
