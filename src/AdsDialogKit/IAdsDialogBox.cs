@@ -11,5 +11,6 @@ namespace AdsDialogKit
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         IAdsBasicDialogBox Basic { get; }
+        
     }
 }
