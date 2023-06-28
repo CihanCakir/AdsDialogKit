@@ -18,6 +18,7 @@
         <ProduceReferenceAssemblyInOutDir>true</ProduceReferenceAssemblyInOutDir>
     <PackageTags>AdaptiveCard, DialogCard, MessageBox</PackageTags>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <EnablePackageValidation>true</EnablePackageValidation>
