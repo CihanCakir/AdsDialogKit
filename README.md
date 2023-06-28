@@ -15,9 +15,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/CihanCakir/AdsDialogKit">
-    <img src="logo.png" alt="Logo" width="80" height="80">
-  </a>
+  <img src="https://github.com/CihanCakir/AdsDialogKit/blob/main/logo.PNG" alt="AdsDialogKit" width="200" height="200">
+
 
   <h3 align="center">AdsDialogKit</h3>
 
@@ -93,9 +92,9 @@ This description highlights the key features and user benefits of the Dialog Kit
 
 ### Installation
 
-* Add NLocalizator NuGet package to your project 
+* Add AdsDialogKit NuGet package to your project 
 ```sh
-dotnet add package NLocalizator
+dotnet add package AdsDialogKit
 ```
 
 <!-- USAGE EXAMPLES -->
@@ -279,5 +278,5 @@ Project Link: [https://github.com/CihanCakir/AdsDialogKit](https://github.com/Ci
 [product-screenshot]: images/screenshot.png
 [.Net]: https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white
 [.Net-shield]: https://img.shields.io/badge/.NET-5C2D91?
-[nuget-shield]: https://img.shields.io/nuget/v/NLocalizator?style=for-the-badge
-[nuget-url]: https://www.nuget.org/packages/NLocalizator
+[nuget-shield]: https://img.shields.io/nuget/v/AdsDialogKit?style=for-the-badge
+[nuget-url]: https://www.nuget.org/packages/AdsDialogKit
