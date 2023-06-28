@@ -1,40 +1,66 @@
-name: "Nuget-AdsDialogKit"
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+# The previous line enables IntelliSense for this file.
+# See this post for more info https://www.meziantou.net/enabling-intellisense-for-github-actions-workflows-in-vs-code.htm
 
+name: publish
 on:
+  workflow_dispatch:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - '*'
+  release:
+    types:
+      - published
 
 env:
-  PROJECT_PATH: 'src/AdsDialogKit/AdsDialogKit.csproj'
-  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
-  NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_NOLOGO: true
+  NuGetDirectory: ${{ github.workspace}}/nuget
+
+defaults:
+  run:
+    shell: pwsh
 
 jobs:
-  deploy:
-    name: 'Deploy'
-    runs-on: 'windows-latest'
+  create_nuget:
+    runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+    - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+    - uses: actions/upload-artifact@v3
+      with:
+        name: nuget
+        if-no-files-found: error
+        retention-days: 7
+        path: ${{ env.NuGetDirectory }}/*.nupkg
 
-      - name: 'Install dotnet'
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
+  run_test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+    - name: Run tests
+      run: dotnet test --configuration Release
 
-      - name: 'Restore packages'
-        run: dotnet restore ${{ env.PROJECT_PATH }}
-
-      - name: 'Build project'
-        run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
-
-      - name: 'Get Version'
-        id: version
-        uses: battila7/get-version-action@v2
-
-      - name: 'Pack project'
-        run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
-
-      - name: 'Push package'
-        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\*.nupkg -k ${{ secrets.NUGET_APIKEY }} -s ${{ env.NUGET_SOURCE_URL }}  --skip-duplicate
+  deploy:
+    # Publish only when creating a release
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: nuget
+        path: ${{ env.NuGetDirectory }}
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+    - name: Publish NuGet package
+      run: |
+        foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
+            dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json
+        }
