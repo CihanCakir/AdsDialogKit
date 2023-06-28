@@ -12,7 +12,7 @@
         <PackageIcon>logo.png</PackageIcon>
         <PackageProjectUrl>https://github.com/CihanCakir/AdsDialogKit</PackageProjectUrl>
         <RepositoryUrl>https://github.com/CihanCakir/AdsDialogKit</RepositoryUrl>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
         <Copyright>Copyright (c) 2023, Cihan Çakır</Copyright>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <ProduceReferenceAssemblyInOutDir>true</ProduceReferenceAssemblyInOutDir>
