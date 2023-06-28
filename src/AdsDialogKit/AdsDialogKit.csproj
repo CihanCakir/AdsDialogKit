@@ -14,7 +14,7 @@
         <RepositoryUrl>https://github.com/CihanCakir/AdsDialogKit</RepositoryUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <Copyright>Copyright (c) 2023, Cihan Çakır</Copyright>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageReadmeFile>README-Nuget.md</PackageReadmeFile>
         <ProduceReferenceAssemblyInOutDir>true</ProduceReferenceAssemblyInOutDir>
     <PackageTags>AdaptiveCard, DialogCard, MessageBox</PackageTags>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\..\README-Nuget.md" Pack="true" PackagePath="\"/>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="\"/>
     <None Include="..\..\logo.png" Pack="true" PackagePath="\"/>
     <Folder Include="Components\AdaptiveCard\" />

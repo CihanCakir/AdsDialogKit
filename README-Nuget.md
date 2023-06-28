@@ -1,7 +1,4 @@
-<a name="readme-top"></a>
-
-
-
+[![AutoMapper](https://github.com/CihanCakir/AdsDialogKit/blob/main/logo.PNG)]
 <!-- PROJECT SHIELDS -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -13,53 +10,12 @@
 
 
 <!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <img src="https://github.com/CihanCakir/AdsDialogKit/blob/main/logo.PNG" alt="AdsDialogKit" width="200" height="200">
+# AdsDialogKit
 
-
-  <h3 align="center">AdsDialogKit</h3>
-
-  <p align="center">
-   Dialog Kit is a user interface solution that provides fast and customizable dialog boxes.
-    <br />
-    <a href="https://github.com/CihanCakir/AdsDialogKit/blob/main/README.md"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/CihanCakir/AdsDialogKit/tree/main/sample/AdsDialogKit.Console">View Demo</a>
-    ·
-    <a href="https://github.com/CihanCakir/AdsDialogKit/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/CihanCakir/AdsDialogKit/issues">Request Feature</a>
-  </p>
-</div>
 
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#usage">Usage</a></li>
-      </ul>
-    </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
 
 
 
@@ -70,8 +26,6 @@ Dialog Kit is a useful and customizable dialog box solution for user interfaces.
 
 This description highlights the key features and user benefits of the Dialog Kit NuGet package you have created. You can help users understand and use the package by adding this description to the NuGet package's documentation, the package's description section, or the GitHub repository. Of course, you may also want to add customization options or other noteworthy details.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -79,7 +33,6 @@ This description highlights the key features and user benefits of the Dialog Kit
 
 [![.Net]][.Net-shield]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -173,8 +126,6 @@ public class DialogBoxController : ControllerBase
 
 _For more examples, please refer to the [Sample Project](https://github.com/CihanCakir/AdsDialogKit/tree/main/sample/AdsDialogKit.Console)_
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- ROADMAP -->
@@ -189,8 +140,6 @@ _For more examples, please refer to the [Sample Project](https://github.com/Ciha
 - [ ] Add tests
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -208,16 +157,12 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -229,8 +174,6 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 Cihan Çakır - dev.cihancakir@gmail.com
 
 Project Link: [https://github.com/CihanCakir/AdsDialogKit](https://github.com/CihanCakir/AdsDialogKit)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
