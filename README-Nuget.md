@@ -1,4 +1,4 @@
-[![AutoMapper](https://github.com/CihanCakir/AdsDialogKit/blob/main/logo.PNG)]
+[![AdsDialogKit](https://raw.githubusercontent.com/CihanCakir/AdsDialogKit/main/logo.PNG)]
 <!-- PROJECT SHIELDS -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
