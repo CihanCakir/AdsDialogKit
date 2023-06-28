@@ -26,7 +26,7 @@
     <a href="https://github.com/CihanCakir/AdsDialogKit/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/CihanCakir/AdsDialogKit/tree/main/samples/NLocalizator.Sample">View Demo</a>
+    <a href="https://github.com/CihanCakir/AdsDialogKit/tree/main/sample/AdsDialogKit.Console">View Demo</a>
     ·
     <a href="https://github.com/CihanCakir/AdsDialogKit/issues">Report Bug</a>
     ·
@@ -100,106 +100,78 @@ dotnet add package AdsDialogKit
 <!-- USAGE EXAMPLES -->
 ### Usage
 
-##### Create Language Files
-
-Create `*lang-name*.json` file in project directory. This file name is in use configuration of the tool.
-
-For example `tr.json` file:
-```json
-{
-	"Monday" : "Pazartesi",
-	"Tuesday" : "Salı",
-	"Wednesday" : "Çarşamba",
-	"Thursday" : "Perşembe",
-	"Friday" : "Cuma",
-	"Saturday" : "Cumartesi",
-	"Sunday" : "Pazar"
-}
-```
-
 ##### Create The LocalizationBook
 
 ```csharp
-using NLocalizator;
+using AdsDialogKit;
 
-public class DaysLocalizationBook : ILocalizationBook
+public static class SampleBasicDialogBoxExtensions
 {
-    public string Monday { get; set; }
-    public string Tuesday { get; set; }
-    public string Wednesday { get; set; }
-    public string Thursday { get; set; }
-    public string Friday { get; set; }
-    public string Saturday { get; set; }
-    public string Sunday { get; set; }
+    public static IAdsBasicDialogBox BasicDialogError(this IAdsDialogBox AdsDialogBox)
+    {
+        return AdsDialogBox.Basic
+            .Header
+                .SetTitle("Example Title For the BasicDialogError")
+                .Next()
+            .Body
+                .SetText("Example Description For the BasicDialogError")
+                .Next()
+            .Footer
+                .Button
+                    .SetText("Agree")
+                    .SetAction(AdsDialogKitButtonAction.GoToDeepLink)
+                    .SetLink("")
+                    .Next()
+                .Button
+                    .SetText("Disagree")
+                    .SetAction(AdsDialogKitButtonAction.GoToDeepLink)
+                    .SetLink("")
+                    .Next()
+                .Next()
+            .Create();
+    }
 }
 ```
 
 ##### Dependency Injection
 
 ```csharp
-using NLocalizator;
+using AdsDialogKit;
 
-builder.Services.AddLocalizator<DaysLocalizationBook>(options =>
-    options.AddFolderPath(@"*the_folder_path_that_contains_tr.json_file*")
-    .AddLanguage("tr"));
+builder.Services.AddAdsDialogBox()
 ```
 
 ##### Call the Localizator
 
 ```csharp
-using NLocalizator;
+using AdsDialogKit;
 
-public class WeatherForecastController : ControllerBase
+public class DialogBoxController : ControllerBase
 {
-    private readonly Localizator<DaysLocalizationBook> _daysLocalizator;
+    readonly IAdsDialogBox _adsDialogBox;
 
-    public WeatherForecastController(Localizator<DaysLocalizationBook> daysLocalizator)
+    public DialogBoxController(IAdsDialogBox adsDialogBox)
     {
-        _daysLocalizator = daysLocalizator;
+        _adsDialogBox = adsDialogBox;
     }
 
-    [HttpGet(Name = "GetToday")]
-    public string Get()
+    [HttpGet(Name = "BasicDialogInformation")]
+    public AdsDialogBox Get()
     {
-        var today = _daysLocalizator.GetByName("Monday");
-
-        //or
-
-        today = _daysLocalizator.LocalizationBook.Monday;
-
-        return today;
+        var model = SampleBasicDialogBoxExtensions.BasicDialogInformation(_adsDialogBox);
+        var serializerSettings = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Include,
+        };
+        var serializedDialogBox = JsonConvert.SerializeObject(model, serializerSettings);
+        return JsonConvert.DeserializeObject<AdsDialogBox>(serializedDialogBox, serializerSettings);
     }
 }
 ```
 
-##### Change The Language
 
-* Make sure the new `*lang-name*.json` file be in the same folder with `tr.json`
 
-`de.json` file:
-```json
-{
-	"Monday" : "Montag",
-	"Tuesday" : "Deinstag",
-	"Wednesday" : "Mittwoch",
-	"Thursday" : "Donnerstag",
-	"Friday" : "Freitag",
-	"Saturday" : "Samstag",
-	"Sunday" : "Sonntag"
-}
-```
-
-* Create a new post method in the controller
-```csharp
-[HttpPost(Name = "SetLanguageToGerman")]
-public bool SetLanguageToGerman()
-{
-    _daysLocalizator.ChangeLanguage("de");
-    return true;
-}
-```
-
-_For more examples, please refer to the [Sample Project](https://github.com/CihanCakir/AdsDialogKit/tree/main/samples/NLocalizator.Sample)_
+_For more examples, please refer to the [Sample Project](https://github.com/CihanCakir/AdsDialogKit/tree/main/sample/AdsDialogKit.Console)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -263,15 +235,15 @@ Project Link: [https://github.com/CihanCakir/AdsDialogKit](https://github.com/Ci
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/adessoTurkey-dotNET/NLocalizator.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/CihanCakir/AdsDialogKit.svg?style=for-the-badge
 [contributors-url]: https://github.com/CihanCakir/AdsDialogKit/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/adessoTurkey-dotNET/NLocalizator.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/CihanCakir/AdsDialogKit.svg?style=for-the-badge
 [forks-url]: https://github.com/CihanCakir/AdsDialogKit/network/members
-[stars-shield]: https://img.shields.io/github/stars/adessoTurkey-dotNET/NLocalizator.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/CihanCakir/AdsDialogKit.svg?style=for-the-badge
 [stars-url]: https://github.com/CihanCakir/AdsDialogKit/stargazers
-[issues-shield]: https://img.shields.io/github/issues/adessoTurkey-dotNET/NLocalizator.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/CihanCakir/AdsDialogKit.svg?style=for-the-badge
 [issues-url]: https://github.com/CihanCakir/AdsDialogKit/issues
-[license-shield]: https://img.shields.io/github/license/adessoTurkey-dotNET/NLocalizator.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/CihanCakir/AdsDialogKit.svg?style=for-the-badge
 [license-url]: https://github.com/CihanCakir/AdsDialogKit/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/Cihancakirx
